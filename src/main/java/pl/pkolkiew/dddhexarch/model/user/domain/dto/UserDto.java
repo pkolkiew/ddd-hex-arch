@@ -3,6 +3,7 @@ package pl.pkolkiew.dddhexarch.model.user.domain.dto;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * @author pkolkiew
@@ -10,6 +11,7 @@ import lombok.Getter;
  */
 @Builder
 @Getter
+@NoArgsConstructor
 @EqualsAndHashCode
 public class UserDto {
 
