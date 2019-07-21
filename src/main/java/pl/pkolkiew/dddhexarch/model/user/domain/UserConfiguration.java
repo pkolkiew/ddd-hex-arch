@@ -2,7 +2,6 @@ package pl.pkolkiew.dddhexarch.model.user.domain;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 /**
  * @author pkolkiew
@@ -17,16 +16,15 @@ class UserConfiguration {
     }
 
     @Bean
-    @Profile("!in-memory")
     UserFacade userFacade(UserRepository userRepository) {
         UserCreator userCreator = new UserCreator();
         return new UserFacade(userRepository, userCreator);
     }
 
-    @Bean
-    @Profile("in-memory")
-    UserFacade userFacadeInMemory() {
-        UserCreator userCreator = new UserCreator();
-        return new UserFacade(new InMemoryUserRepository(), userCreator);
-    }
+//    @Bean
+//    @Profile("in-memory")
+//    UserFacade userFacadeInMemory() {
+//        UserCreator userCreator = new UserCreator();
+//        return new UserFacade(new InMemoryUserRepository(), userCreator);
+//    }
 }

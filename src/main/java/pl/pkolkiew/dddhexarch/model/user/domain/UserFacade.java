@@ -2,6 +2,7 @@ package pl.pkolkiew.dddhexarch.model.user.domain;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 import pl.pkolkiew.dddhexarch.model.user.domain.dto.UserDto;
 
 import static java.util.Objects.requireNonNull;
@@ -10,6 +11,7 @@ import static java.util.Objects.requireNonNull;
  * @author pkolkiew
  * Created 20.07.2019
  */
+@Transactional
 public class UserFacade {
 
     private final UserRepository userRepository;
