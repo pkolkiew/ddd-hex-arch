@@ -20,7 +20,7 @@ public class UserFacade {
         this.userCreator = userCreator;
     }
 
-    // TODO: impl something to return
+    // TODO: impl event publisher
     public UserDto addUser(UserDto userDto) {
         requireNonNull(userDto);
         validate();
