@@ -39,7 +39,7 @@ class InMemoryUserRepository implements UserRepository {
 
 
     @Override
-    public void remove(String login) {
+    public void delete(String login) {
         map.remove(login);
     }
 
