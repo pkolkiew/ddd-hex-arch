@@ -11,13 +11,12 @@ import org.springframework.context.annotation.Configuration;
 class OrderSpringConfiguration {
 
     @Bean
-    OrderFacade orderFacade(OrderRepository orderRepository) {
-        OrderCreator orderCreator = new OrderCreator();
-        return new OrderFacade(orderRepository, orderCreator);
+    OrderFacade orderFacade() {
+        return new OrderFacade(orderRepository(), new OrderCreator());
     }
 
     @Bean
-    OrderRepository orderRepository(){
+    OrderRepository orderRepository() {
         return new InMemoryOrderRepository();
     }
 
