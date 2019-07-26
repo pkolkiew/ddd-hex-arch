@@ -1,9 +1,7 @@
 package pl.pkolkiew.dddhexarch.user.domain;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Repository;
 import pl.pkolkiew.dddhexarch.user.domain.exceptions.UserNotFoundException;
 
 import java.util.Optional;
@@ -12,8 +10,6 @@ import java.util.Optional;
  * @author pkolkiew
  * Created 20.07.2019
  */
-@Repository
-@Profile("!in-memory")
 class DatabaseUserRepository implements UserRepository {
 
     private UserJpaRepository userJpaRepository;

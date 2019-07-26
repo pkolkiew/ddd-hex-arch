@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import pl.pkolkiew.dddhexarch.user.domain.UserFacade;
+import pl.pkolkiew.dddhexarch.user.domain.query.UserQueryDto;
 import pl.pkolkiew.dddhexarch.user.dto.UserDto;
 
 /**
@@ -33,9 +34,9 @@ class UserController {
         return userFacade.findAll(pageable);
     }
 
-    @GetMapping(path = "/show/{login}")
-    UserDto findUser(@PathVariable String login) {
-        return userFacade.show(login);
+    @GetMapping(path = "/show/{userQueryDto}")
+    UserDto findUser(@PathVariable UserQueryDto userQueryDto) {
+        return userFacade.show(userQueryDto.getLogin());
     }
 
 }

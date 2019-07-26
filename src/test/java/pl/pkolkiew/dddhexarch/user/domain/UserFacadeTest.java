@@ -18,7 +18,7 @@ import pl.pkolkiew.dddhexarch.user.dto.UserDto;
  */
 public class UserFacadeTest {
 
-    private UserFacade userFacade = new UserConfiguration().userFacade();
+    private UserFacade userFacade = new UserConfiguration().userFacade( );
     private UserDto userDto;
 
     private final String LOGIN = "login123";

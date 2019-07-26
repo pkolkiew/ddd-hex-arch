@@ -1,10 +1,12 @@
 package pl.pkolkiew.dddhexarch.user.domain;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import org.springframework.data.annotation.Id;
 import pl.pkolkiew.dddhexarch.user.dto.UserDto;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.UUID;
 
 /**
@@ -13,6 +15,8 @@ import java.util.UUID;
  */
 @Builder
 @Entity
+@Getter
+@EqualsAndHashCode
 class User {
 
     @Id
