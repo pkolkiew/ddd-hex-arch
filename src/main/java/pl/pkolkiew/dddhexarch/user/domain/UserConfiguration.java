@@ -11,7 +11,7 @@ class UserConfiguration {
         return userFacade(new InMemoryUserRepository());
     }
 
-    UserFacade userFacade(UserRepository userRepository) {
+    private UserFacade userFacade(UserRepository userRepository) {
         UserCreator userCreator = new UserCreator();
         return new UserFacade(userRepository, userCreator);
     }

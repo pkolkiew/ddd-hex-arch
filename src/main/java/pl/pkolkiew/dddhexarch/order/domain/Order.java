@@ -1,19 +1,19 @@
 package pl.pkolkiew.dddhexarch.order.domain;
 
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import org.springframework.data.annotation.Id;
+import lombok.Data;
 import pl.pkolkiew.dddhexarch.order.dto.OrderDto;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * @author pkolkiew
  * Created 20.07.2019
  */
-@Entity
 @Builder
-@EqualsAndHashCode
+@Data
+@Entity(name = "ORDER_DDD")
 class Order {
 
     @Id

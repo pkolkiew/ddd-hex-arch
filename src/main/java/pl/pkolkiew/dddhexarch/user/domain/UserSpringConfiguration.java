@@ -2,6 +2,7 @@ package pl.pkolkiew.dddhexarch.user.domain;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * @author pkolkiew
@@ -10,14 +11,21 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 class UserSpringConfiguration {
 
+//    @Bean
+//    UserFacade userFacade() {
+//        return new UserFacade(userRepository(), new UserCreator());
+//    }
+
     @Bean
-    UserFacade userFacade() {
-        return new UserFacade(userRepository(), new UserCreator());
+    UserRepository userRepository(UserJpaRepository userJpaRepository) {
+        return new DatabaseUserRepository(userJpaRepository);
     }
 
     @Bean
-    UserRepository userRepository() {
-        return new InMemoryUserRepository();
+    @Profile("test")
+    UserFacade userFacade(UserJpaRepository userJpaRepository) {
+        UserCreator userCreator = new UserCreator();
+        return new UserFacade(new DatabaseUserRepository(userJpaRepository), userCreator);
     }
 
 }
