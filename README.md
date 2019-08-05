@@ -93,7 +93,7 @@ pom example:
                             <tag>${project.version}-${dockerTag}</tag>
                             <buildArgs>
                                 <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-                                <HTTP_PROXY>http://172.18.60.57:8080</HTTP_PROXY>
+                                <HTTP_PROXY>http://</HTTP_PROXY>
                             </buildArgs>
                         </configuration>
                     </plugin>
