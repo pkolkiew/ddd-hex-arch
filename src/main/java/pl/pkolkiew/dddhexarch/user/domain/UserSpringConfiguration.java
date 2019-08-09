@@ -12,11 +12,14 @@ import org.springframework.context.annotation.Profile;
 class UserSpringConfiguration {
 
 //    @Bean
+//    @Primary
+//    @Profile("in-memory")
 //    UserFacade userFacade() {
-//        return new UserFacade(userRepository(), new UserCreator());
+//        return new UserFacade(new InMemoryUserRepository(), new UserCreator());
 //    }
-
-    @Bean
+//
+//    @Bean
+//    @Profile("!in-memory")
     UserRepository userRepository(UserJpaRepository userJpaRepository) {
         return new DatabaseUserRepository(userJpaRepository);
     }

@@ -26,7 +26,7 @@ class UserController {
     @PostMapping(path = "/add")
     void addUser(@RequestBody UserDto userDto) {
         userFacade.addUser(userDto);
-        log.info("User "+userDto.getLogin()+" added");
+        log.info("User " + userDto.getLogin() + " added");
     }
 
     @GetMapping(path = "/users")
