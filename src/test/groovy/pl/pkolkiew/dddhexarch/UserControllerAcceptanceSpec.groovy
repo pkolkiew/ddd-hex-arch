@@ -22,11 +22,11 @@ class UserControllerAcceptanceSpec extends IntegrationSpec implements SampleUser
     UserFacade userFacade
 
     @WithMockUser
-    def "positive add user"() {
+    def "positive add user with pagination"() {
 
         given: "There are users with login: 'login111' and 'login999' in system"
-        userFacade.addUser(user1)
-        userFacade.addUser(user2)
+            userFacade.addUser(user1)
+            userFacade.addUser(user2)
 
         when: "I go to /users"
             ResultActions getUsers = mockMvc.perform(get("/user/users"))
@@ -71,6 +71,87 @@ class UserControllerAcceptanceSpec extends IntegrationSpec implements SampleUser
                             "    \"first\": true,\n" +
                             "    \"empty\": false\n" +
                             "}"
-            ))
+                    ))
+
+        then: "cleaning repo"
+            userFacade.delete(user1.login)
+            userFacade.delete(user2.login)
     }
+
+    // TODO: dont work yet
+
+//    @WithMockUser
+//    def "delete both users"() {
+//
+//        given: "we have users in db already"
+////        userFacade.addUser(user1)
+////        userFacade.addUser(user2)
+//
+//        when: "I delete both users"
+//            userFacade.delete(user1.login)
+//            userFacade.delete(user2.login)
+//
+//        then: "I'm checking if users have been deleted"
+//            UserQueryDto userQueryDto1 = UserQueryDto.builder().login(user1.login).build();
+//            UserQueryDto userQueryDto2 = UserQueryDto.builder().login(user2.login).build();
+//
+//            ResultActions findUser1 = mockMvc.perform(get("/show")
+//                    .accept(MediaType.APPLICATION_JSON)
+//                    .content("{\n" +
+//                            "\t\"login\": \"$user1.login\"\n" +
+//                            "}"))
+//
+//            ResultActions findUser2 = mockMvc.perform(get("/show")
+//                    .accept(MediaType.APPLICATION_JSON)
+//                    .content("{\n" +
+//                            "\t\"login\": \"$user2.login\"\n" +
+//                            "}"))
+//
+//        findUser1.andExpect(status().is(404))
+//                    .andExpect(content().json("{\n" +
+//                            "\t\"code\": \"404\",\n" +
+//                            "\t\"message\": \"userNotFound\",\n" +
+//                            "\t\"details\": \"brak\",\n" +
+//                            "\t\"path\": \"/show\",\n" +
+//                            "\t\"userMessage\": \"No user with given login found\"\n" +
+//                            "}"))
+//
+//        def result2 = findUser2.andExpect(status().is(404))
+//                    .andExpect(content().json("{\n" +
+//                            "    \"code\": \"404\",\n" +
+//                            "    \"message\": \"userNotFound\",\n" +
+//                            "    \"details\": \"brak\",\n" +
+//                            "    \"path\": \"/show\",\n" +
+//                            "    \"userMessage\": \"No user with given login found\"\n" +
+//                            "}")).andReturn();
+//
+//    }
+
+    @WithMockUser
+    def "positive add user without pagination"() {
+
+        given: "There are users with login: 'login111' and 'login999' in system"
+            userFacade.addUser(user1)
+            userFacade.addUser(user2)
+
+        when: "I go to /users"
+            ResultActions getUsers = mockMvc.perform(get("/user/users"))
+            then: "I found two users"
+            getUsers.andExpect(status().isOk())
+                .andExpect(content().json("{\n" +
+                        "    \"content\": [\n" +
+                        "        {\n" +
+                        "            \"login\": \"$user1.login\",\n" +
+                        "            \"pass\": \"$user1.pass\",\n" +
+                        "            \"isActive\": 1\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"login\": \"$user2.login\",\n" +
+                        "            \"pass\": \"$user2.pass\",\n" +
+                        "            \"isActive\": 1\n" +
+                        "        }\n" +
+                        "    ]}"
+                ))
+    }
+
 }

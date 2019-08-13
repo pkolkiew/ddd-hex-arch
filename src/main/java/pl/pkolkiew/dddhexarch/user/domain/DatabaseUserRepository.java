@@ -36,7 +36,9 @@ class DatabaseUserRepository implements UserRepository {
         Optional<User> userOpt = userJpaRepository.findById(login);
         if (userOpt.isEmpty())
             throw new UserNotFoundException(login);
-        userJpaRepository.delete(userOpt.get());
+        User user = userOpt.get();
+        user.setIsActive(0);
+        userJpaRepository.save(user);
     }
 
     @Override

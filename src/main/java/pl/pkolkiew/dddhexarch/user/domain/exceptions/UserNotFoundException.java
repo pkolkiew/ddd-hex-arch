@@ -6,6 +6,6 @@ package pl.pkolkiew.dddhexarch.user.domain.exceptions;
  */
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String login) {
-        super("No user with login: \"" + login + "\" found", null, false, false);
+        super("No user with login: '" + login + "' found", null, false, false);
     }
 }

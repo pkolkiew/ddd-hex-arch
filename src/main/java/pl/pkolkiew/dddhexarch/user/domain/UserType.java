@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  */
 enum UserType {
 
-    COMMON(5D), VIP(2D), PRESIDENT(0D);
+    COMMON(7D), VIP(3D), PRESIDENT(1D);
 
     private BigDecimal provision;
 
