@@ -35,13 +35,13 @@ class UserControllerAcceptanceSpec extends IntegrationSpec implements SampleUser
                     .andExpect(content().json("{\n" +
                             "    \"content\": [\n" +
                             "        {\n" +
-                            "            \"login\": \"login111\",\n" +
-                            "            \"pass\": \"haselko111\",\n" +
+                            "            \"login\": \"$user1.login\",\n" +
+                            "            \"pass\": \"$user1.pass\",\n" +
                             "            \"isActive\": 1\n" +
                             "        },\n" +
                             "        {\n" +
-                            "            \"login\": \"login999\",\n" +
-                            "            \"pass\": \"haselko999\",\n" +
+                            "            \"login\": \"$user2.login\",\n" +
+                            "            \"pass\": \"$user2.pass\",\n" +
                             "            \"isActive\": 1\n" +
                             "        }\n" +
                             "    ],\n" +
