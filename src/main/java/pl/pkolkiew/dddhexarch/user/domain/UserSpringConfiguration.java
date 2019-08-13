@@ -20,8 +20,14 @@ class UserSpringConfiguration {
 //
 //    @Bean
 //    @Profile("!in-memory")
-    UserRepository userRepository(UserJpaRepository userJpaRepository) {
-        return new DatabaseUserRepository(userJpaRepository);
+//    UserRepository userRepository(UserJpaRepository userJpaRepository) {
+//        return new DatabaseUserRepository(userJpaRepository);
+//    }
+
+    @Bean
+    @Profile("in-memory")
+    UserFacade userFacade() {
+        return new UserFacade(new InMemoryUserRepository(), new UserCreator());
     }
 
     @Bean

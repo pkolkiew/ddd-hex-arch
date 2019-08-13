@@ -38,8 +38,3 @@ class UserSpec extends Specification implements SampleUsers {
     }
 
 }
-
-
-
-
-

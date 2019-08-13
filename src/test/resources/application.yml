@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ddd-hex-arch
+  boot:
+    admin:
+      client:
+        enabled: false
+
+---
+
+spring:
+  profiles: in-memory
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
