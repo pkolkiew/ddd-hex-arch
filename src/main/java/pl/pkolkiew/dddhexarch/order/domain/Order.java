@@ -6,6 +6,7 @@ import pl.pkolkiew.dddhexarch.order.dto.OrderDto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.UUID;
 
 /**
  * @author pkolkiew
@@ -20,6 +21,8 @@ class Order {
     private Long orderId;
     private String productName;
     private String userLogin;
+
+    private UUID paymentId;
 
     OrderDto dto() {
         return OrderDto.builder()

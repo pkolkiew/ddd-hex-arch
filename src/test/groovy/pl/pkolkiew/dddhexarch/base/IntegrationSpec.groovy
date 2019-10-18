@@ -18,7 +18,6 @@ import spock.lang.Specification
 @TypeChecked
 @SpringBootTest(classes = DddHexArchApplication.class)
 @ActiveProfiles("test")
-//@Transactional
 @Rollback
 abstract class IntegrationSpec extends Specification {
 
